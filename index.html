@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> el conde </title>
+    <!-- Favicon en la pestaña del navegador -->
+    <link rel="icon" type="image/png" href="cuervo.png">
     <!-- Fuente estilo Hacker / Terminal -->
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
@@ -12,7 +14,7 @@
             --red-glow: rgba(255, 0, 51, 0.75);
             --red-dim: rgba(255, 0, 51, 0.2);
             --bg-dark: #030000;
-            --orbit-radius: 210px; /* Distancia de los iconos al centro */
+            --orbit-radius: 210px;
         }
 
         * {
@@ -29,7 +31,6 @@
             width: 100vw;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -61,33 +62,6 @@
             z-index: 9;
         }
 
-        /* Encabezado Superior con el Logo */
-        .page-header {
-            position: absolute;
-            top: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 15;
-            animation: holo-flicker 5s infinite;
-        }
-
-        .header-logo {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px var(--red-glow));
-            border: 1px solid var(--red-core);
-        }
-
-        .header-title {
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            text-shadow: 0 0 8px var(--red-glow);
-            text-transform: uppercase;
-        }
-
         /* Contenedor Principal Orbital */
         .hologram-hub {
             position: relative;
@@ -97,7 +71,6 @@
             justify-content: center;
             align-items: center;
             animation: holo-flicker 5s infinite;
-            margin-top: 30px;
         }
 
         /* Anillos holográficos decorativos */
@@ -294,19 +267,10 @@
                 font-size: 0.95rem;
                 padding: 10px 18px;
             }
-            .header-title {
-                font-size: 0.9rem;
-            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Encabezado con el Logo -->
-    <header class="page-header">
-        <img src="cuervo.png" alt="Logo Header" class="header-logo">
-        <span class="header-title">EL CONDE FERO</span>
-    </header>
 
     <div class="hologram-hub">
         <!-- Anillos holográficos -->
@@ -366,13 +330,11 @@
         const copyStatus = document.getElementById('copy-status');
         const emailText = document.getElementById('email-text').innerText;
 
-        // Mostrar u ocultar el correo al hacer clic en el logo de Gmail
         gmailBtn.addEventListener('click', () => {
             gmailDisplay.classList.toggle('active');
             copyStatus.innerText = 'COPIAR';
         });
 
-        // Copiar correo al portapapeles si hacen clic en el recuadro holográfico
         gmailDisplay.addEventListener('click', () => {
             navigator.clipboard.writeText(emailText).then(() => {
                 copyStatus.innerText = 'COPIADO';
